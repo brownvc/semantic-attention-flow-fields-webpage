@@ -1,0 +1,386 @@
+---
+redirect_from: saff/
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Supplemental material</title>
+  <style>
+    body {
+      padding: 1em;
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background-color: rgb(255, 255, 255);
+    }
+
+    #container {
+      max-width: 1000px;
+      text-align: justify;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: rgb(0, 51, 102);
+      text-align: center;
+    }
+
+    h3 {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    li {
+      margin: 3px 0px;
+      width: 560px;
+      hyphens: auto;
+      text-align: justify;
+    }
+
+    a {
+      color: rgb(0, 51, 102);
+      text-decoration: none;
+    }
+
+    a:link {
+      color: rgb(39, 82, 178);
+    }
+
+    a:visited {
+      color: rgb(39, 82, 178);
+    }
+
+    a:hover {
+      color: rgb(53, 0, 0);
+    }
+
+    .dataset {
+      font-variant: small-caps;
+    }
+
+    .centerContent {
+      text-align: center;
+    }
+
+    .centerContent table {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+    }
+
+    td p {
+      text-align: center;
+      margin-top: 0px;
+      margin-bottom: 5px;
+    }
+  </style>
+  <script>
+    function addVideoGrid(div, data) {
+      console.warn(data);
+      let str = "<div class='centerContent'><table><tbody>";
+      for (let i = 0; i < data.length; i++) {
+        str += "<tr>";
+        for (let j = 0; j < data[i].length; j++) {
+          if (data[i][j]) {
+            str += "<td><p>" + data[i][j].label + "</p><video loop controls muted playbackRate=0.5 width=300px><source src=" + data[i][j].path + " type='video/mp4'></video></td>";
+          } else {
+            str += "<td></td>"
+          }
+        }
+        str += "</tr>";
+      }
+      str += "</tbody></table></div>"
+      div.innerHTML = div.innerHTML + str;
+
+      // Videos are too fast, set playback to be half speed by default
+      justAddedVideos = div.getElementsByTagName("video")
+      setPlaybackRateOnVideos( justAddedVideos, 0.5 );
+    }
+
+    function addVideoControls(div, videoDivName) {
+      let str = "<div class='centerContent'>";
+
+      const playbackRates = [
+        { rate: 0.05, label: '0.10x' },
+        { rate: 0.125, label: '0.25x' },
+        { rate: 0.25, label: '0.50x' },
+        { rate: 0.5, label: '1.00x' },
+      ]
+
+      str += "<button onclick='setPlayStateOnVideos( document.getElementById(\"" + videoDivName + "\").getElementsByTagName(\"video\" ), true)'>Play All</button>";
+      str += "<button onclick='setPlayStateOnVideos( document.getElementById(\"" + videoDivName + "\").getElementsByTagName( \"video\" ), false)'>Pause All</button>";
+      str += "<button onclick='setTimeOnVideos( document.getElementById(\"" + videoDivName + "\").getElementsByTagName( \"video\" ), 0)'>Reset All to t=0</button>";
+      playbackRates.forEach((pbr) => {
+        str += "<button onclick='setPlaybackRateOnVideos( document.getElementById(\"" + videoDivName + "\").getElementsByTagName( \"video\" ), " + pbr.rate + ")'>" + pbr.label + "</button>"
+      });
+      str += "</div>"
+      div.innerHTML += str;
+    }
+
+    function setPlaybackRateOnVideos(videos, rate) {
+      for (let i = 0; i < videos.length; i++)
+        videos[i].playbackRate = rate
+    }
+
+    function setPlayStateOnVideos(videos, playState) {
+      for (let i = 0; i < videos.length; i++) {
+        if (playState)
+          videos[i].play()
+        else
+          videos[i].pause()
+      }
+    }
+
+    function setTimeOnVideos(videos, time) {
+      for (let i = 0; i < videos.length; i++) {
+        videos[i].currentTime = time
+      }
+    }
+
+    function showVideoDiv(datasetName) {
+
+      dsDiv = document.getElementById(datasetName + '-videos');
+      videosInDiv = dsDiv.getElementsByTagName("video")
+      setPlayStateOnVideos(videosInDiv, false)
+
+      dsDiv.style.display = 'none'
+      dsDiv.style.display = 'block'
+    }
+
+    function hideVideoDiv(datasetName) {
+      dsDiv = document.getElementById(datasetName + '-videos');
+      videosInDiv = dsDiv.getElementsByTagName("video")
+      dsDiv.style.display = 'none'
+    }
+  </script>
+
+</head>
+
+
+<body>
+  <div id="container">
+    <a id="top"></a>
+    <h1>Semantic Attention Flow Fields for Dynamic Scene Decomposition</h1>
+    <h2>Submission 4409&mdash;Supplemental material and results</h2>
+
+    <p><em>Note:</em> This page has 100+ videos. Each set of results will show/hide through a button to ease the burden on the browser.</p>
+
+
+    <h2>Index</h2>
+    <a id="datasetindex"></a>
+    <div id="datasetindexappend">0. <a href="#contributions">Key aspects of our method</a><br></div>
+
+
+    <h2>Key aspects of our method &nbsp; <a href='#top'>🔝</a></h2>
+    <a id="contributions"></a>
+
+    <div id="pyramidDiv">
+      <h3>Pyramid feature extraction</h3>
+      <p>Semantic and saliency quality improves with our pyramid feature extraction approach.</p>
+      <p><span class='dataset'>Balloon NBoard</span> sequence below shows low resolution raw semantics and saliency from DINO-ViT and our higher resolution versions on the right. <em>Note:</em> Features have been projected via PCA and so some color variation is expected; colors are not directly comparable.</p>
+    </div>
+    <script>
+      addVideoControls(document.getElementById("pyramidDiv"), "pyramidDiv");
+      addVideoGrid(document.getElementById("pyramidDiv"), [
+        [
+          { path: 'pyramid/rgb_input.mp4', label: 'Input sequence' },
+          { path: 'pyramid/feat_input.mp4', label: 'Raw semantics' },
+          { path: 'pyramid/pyr_feat_input.mp4', label: 'Semantics after our pyramid extraction' }
+        ],
+        [
+          null,
+          { path: 'pyramid/sal_input.mp4', label: 'Raw saliency' },
+          { path: 'pyramid/pyr_sal_input.mp4', label: 'Saliency after our pyramid extraction' }
+        ]
+      ]);
+    </script>
+
+    <div id="volumeDiv">
+      <h3>Feature volume integration</h3>
+      <p>Semantic and saliency quality improves further through volume integration.</p>
+      <p><span class='dataset'>Balloon NBoard</span> sequence below shows the semantic and saliency input to the
+        optimization process with the rendered output after optimization.</p>
+    </div>
+    <script>
+      addVideoControls(document.getElementById("volumeDiv"), "volumeDiv");
+      addVideoGrid(document.getElementById("volumeDiv"), [
+        [
+          { path: 'volume/rgb_input.mp4', label: 'Input sequence' },
+          { path: 'volume/pyr_feat_input.mp4', label: 'Pyramid semantics' },
+          { path: 'volume/feat_output.mp4', label: 'Volume semantics (input views)' },
+          { path: 'volume/feat_output_novel.mp4', label: 'Volume semantics (novel views at fixed time)' }
+        ],
+        [
+          null,
+          { path: 'volume/pyr_sal_input.mp4', label: 'Pyramid saliency' },
+          { path: 'volume/sal_output.mp4', label: 'Volume saliency (input views)' },
+          { path: 'volume/sal_output_novel.mp4', label: 'Volume saliency (novel views at fixed time)' }
+        ]
+      ]);
+    </script>
+
+    <div id="clusterDiv">
+      <h3>Saliency-aware clustering</h3>
+      <p>Saliency-aware clustering improves decomposition.</p>
+      <p><span class='dataset'>DynamicFace</span> sequence below shows the clustering results before saliency voting
+        and before cluster merging.</p>
+    </div>
+    <script>
+      addVideoControls(document.getElementById("clusterDiv"), "clusterDiv");
+      addVideoGrid(document.getElementById("clusterDiv"), [
+        [
+          { path: 'clustering/novote.mp4', label: 'Before saliency voting (input views)' },
+          { path: 'clustering/nomerge.mp4', label: 'Before merging (input views)' },
+          { path: 'clustering/aftermerge.mp4', label: 'Final clustering (input views)' },
+        ],
+        [
+          { path: 'clustering/novote_novel.mp4', label: 'Before saliency voting (novel views)' },
+          { path: 'clustering/nomerge_novel.mp4', label: 'Before merging (novel views)' },
+          { path: 'clustering/aftermerge_novel.mp4', label: 'Final clustering (novel views)' },
+        ]
+      ]);
+    </script>
+
+    <h2>Datasets</h2>
+    <a id="datasets"></a>
+
+    <script>
+      const datasets = [
+        {
+          filenamePrefix: 'Balloon1-2',
+          name: 'balloon1',
+          displayName: 'Balloon NBoard',
+        },
+        {
+          filenamePrefix: 'Umbrella',
+          name: 'umbrella',
+          displayName: 'Umbrella',
+        },
+        {
+          filenamePrefix: 'DynamicFace-2',
+          name: 'dynamicface',
+          displayName: 'DynamicFace',
+        },
+        {
+          filenamePrefix: 'Balloon2-2',
+          name: 'balloon2',
+          displayName: 'Balloon Wall',
+        },
+        {
+          filenamePrefix: 'Jumping',
+          name: 'jumping',
+          displayName: 'Jumping',
+        },
+        {
+          filenamePrefix: 'Skating',
+          name: 'skating',
+          note: 'Sometimes wanted salient objects are static, e.g., the human in <span class="dataset">Balloon NBoard</span>. Othertimes, salient static objects may be unwanted, like in this sequence. Should an application know that wanted objects are dynamic, then the SAFF representation allows us to isolate static salient clusters easily via the scene flow (see main paper discussion). We show all salient objects here regardless of dynamics.',
+          displayName: 'Skating',
+        },
+        {
+          filenamePrefix: 'Playground',
+          name: 'playground',
+          note: 'Sometimes wanted salient objects are static, e.g., the human in <span class="dataset">Balloon NBoard</span>. Othertimes, salient static objects may be unwanted, like in this sequence. Should an application know that wanted objects are dynamic, then the SAFF representation allows us to isolate static salient clusters easily via the scene flow (see main paper discussion). We show all salient objects here regardless of dynamics.',
+          displayName: 'Playground',
+        },
+      ]
+
+      const methods = [
+        {
+          name: 'SAFF',
+          displayName: 'SAFF (Ours)',
+          rgb: true,
+          fg: true,
+          depth: true,
+          cluster: true,
+        },
+        {
+          name: 'NSFF',
+          displayName: 'NSFF',
+          rgb: true,
+          fg: true,
+          depth: true,
+          cluster: false,
+        },
+        {
+          name: 'DinoBaseline',
+          displayName: 'DINO-ViT Baseline',
+          rgb: false,
+          fg: true,
+          depth: false,
+          cluster: true,
+        },
+        {
+          name: 'ProposeReduce',
+          displayName: 'ProposeReduce',
+          rgb: false,
+          fg: true,
+          depth: false,
+          cluster: true,
+        },
+        {
+          name: 'D2NeRF',
+          displayName: 'D<sup>2</sup>NeRF',
+          rgb: true,
+          fg: true,
+          depth: true,
+          cluster: false,
+        }
+      ]
+
+      channels = [
+        { name: 'rgb', displayName: 'RGB' },
+        { name: 'depth', displayName: 'depth' },
+        { name: 'cluster', displayName: 'clustering' },
+        { name: 'fg', displayName: 'fg/bg' },
+      ]
+
+      datasets.forEach((d, i) => {
+        const index = document.getElementById("datasetindexappend")
+        index.innerHTML += (i + 1) + ". <a href='#" + d.name + "-results'>Results on the <span class='dataset'>" + d.displayName + "</span> dataset<br>"
+
+        const target = document.getElementById("datasets")
+        const dsDiv = document.createElement("div")
+        dsDiv.setAttribute("id", d.name + '-results')
+        target.append(dsDiv)
+        dsDiv.innerHTML += "<h2>" + (i + 1) + ". Results on the <span class='dataset'>" + d.displayName + "</span> dataset &nbsp; <a href='#top'>🔝</a></h2>"
+
+        dsDiv.innerHTML = dsDiv.innerHTML + `<button onclick='
+                                            showVideoDiv(\"` + d.name + `\");
+                                            setPlayStateOnVideos( document.getElementById(\"` + d.name + `-results\").getElementsByTagName( \"video\" ), true ` + `);
+                                            window.location = \"#Dataset` + d.name + `\";'
+                                          >
+                                          Show Videos
+                                          </button>`
+        dsDiv.innerHTML = dsDiv.innerHTML + `<button onclick='hideVideoDiv(\"` + d.name + `\")'>Hide Videos</button><br><br>`
+
+        const videoGridData = methods.map((method) => (channels.map((channel) => (
+          method[channel.name] ?
+            {
+              path: method.name + '/' + channel.name + '/' + d.filenamePrefix + '_train_' + channel.name + '.mp4',
+              label: method.displayName + ' ' + channel.displayName
+            } : null
+        ))))
+
+        const videoDiv = document.createElement("div")
+        
+        if( d.note != undefined && d.note != "" )
+        {
+          videoDiv.innerHTML += "<p><em>Note:</em> " + d.note + "</p>"
+        }
+
+        videoDiv.setAttribute("id", d.name + '-videos')
+        dsDiv.append(videoDiv);
+        addVideoControls(videoDiv, d.name + '-videos')
+        addVideoGrid(videoDiv, videoGridData);
+        hideVideoDiv(d.name);
+      });
+    </script>
+  </div>
+</body>
+
+</html>
