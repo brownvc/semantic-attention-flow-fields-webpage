@@ -260,11 +260,7 @@ redirect_from: saff/
           name: 'umbrella',
           displayName: 'Umbrella',
         },
-        {
-          filenamePrefix: 'DynamicFace-2',
-          name: 'dynamicface',
-          displayName: 'DynamicFace',
-        },
+        
         {
           filenamePrefix: 'Balloon2-2',
           name: 'balloon2',
@@ -294,49 +290,49 @@ redirect_from: saff/
           name: 'SAFF',
           displayName: 'SAFF (Ours)',
           rgb: true,
-          fg: true,
+          fg_blend: true,
           depth: true,
-          cluster: true,
+          cluster_blend: true,
         },
         {
           name: 'NSFF',
           displayName: 'NSFF',
           rgb: true,
-          fg: true,
+          fg_blend: true,
           depth: true,
-          cluster: false,
+          cluster_blend: false,
         },
         {
           name: 'DinoBaseline',
           displayName: 'DINO-ViT Baseline',
           rgb: false,
-          fg: true,
+          fg_blend: true,
           depth: false,
-          cluster: true,
+          cluster_blend: true,
         },
         {
           name: 'ProposeReduce',
           displayName: 'ProposeReduce',
           rgb: false,
-          fg: true,
+          fg_blend: true,
           depth: false,
-          cluster: true,
+          cluster_blend: true,
         },
         {
           name: 'D2NeRF',
           displayName: 'D<sup>2</sup>NeRF',
           rgb: true,
-          fg: true,
+          fg_blend: true,
           depth: true,
-          cluster: false,
+          cluster_blend: false,
         }
       ]
 
       channels = [
         { name: 'rgb', displayName: 'RGB' },
         { name: 'depth', displayName: 'depth' },
-        { name: 'cluster', displayName: 'clustering' },
-        { name: 'fg', displayName: 'fg/bg' },
+        { name: 'cluster_blend', displayName: 'clustering' },
+        { name: 'fg_blend', displayName: 'fg/bg' },
       ]
 
       datasets.forEach((d, i) => {
