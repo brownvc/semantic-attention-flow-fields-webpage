@@ -9,6 +9,7 @@ redirect_from: saff/
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <title>Semantic Attention Flow Fields for Dynamic Scene Decomposition</title>
+
   <style>
     body {
       padding: 1em;
@@ -40,6 +41,17 @@ redirect_from: saff/
       hyphens: auto;
       text-align: justify;
     }
+
+PRE {
+    font-family:    'Monotype.com', Courier New, monospace;
+    font-size:  0.7em;
+background-color: #f5f5f5;
+border-radius: 4px;
+}
+
+
+
+
 
     a {
       color: rgb(0, 51, 102);
@@ -77,6 +89,7 @@ redirect_from: saff/
       margin-top: 0px;
       margin-bottom: 5px;
     }
+p {text-align: center;}
   </style>
   <script>
     function addVideoGrid(div, data) {
@@ -165,6 +178,41 @@ redirect_from: saff/
   <div id="container">
     <a id="top"></a>
     <h1>Semantic Attention Flow Fields for<br>Dynamic Scene Decomposition</h1>
+  <p>
+
+<font size="+1">
+      <a href="https://lynl7130.github.io">Yiqing Liang</a> 
+       (Brown), 
+      <a href="https://www.linkedin.com/in/eliot-laidlaw-472640197/">Eliot Laidlaw</a>
+       (Brown), 
+      <a href="https://www.linkedin.com/in/ameyerow/">Alexander Meyerowitz</a>
+       (Brown), 
+      <a href="https://cs.brown.edu/people/ssrinath/">Srinath Sridhar</a>
+      (Brown), 
+      <a href="https://jamestompkin.com/">James Tompkin</a>
+       (Brown)
+</font>  
+
+  </p>
+<p>
+<img src="teaser.svg" style="width:800px;">
+</p>
+<h2>Abstract</h2>
+We present SAFF: a dynamic neural volume reconstruction of a casual monocular video that consists of time-varying color, density, scene flow, semantics, and attention information. The semantics and attention let us identify salient foreground objects separately from the background in arbitrary spacetime views. We add two network heads to represent the semantic and attention information. For optimization, we design semantic attention pyramids from DINO-ViT outputs that trade detail with whole-image context. After optimization, we perform a saliency-aware clustering to decompose the scene. For evaluation on real-world dynamic scene decomposition across spacetime, we annotate object masks in the NVIDIA Dynamic Scene Dataset. We demonstrate that SAFF can decompose dynamic scenes without affecting RGB or depth reconstruction quality, that volume-integrated SAFF outperforms 2D baselines, and that SAFF improves foreground/background segmentation over recent static/dynamic split methods.
+
+<p>
+<a href="https://arxiv.org/pdf/2303.01526.pdf">
+<img src="arxiv.png" style="width:150px;border:2px solid #000;">
+</a>
+<br>
+<font size="+1">
+<u>
+<a href="https://arxiv.org/pdf/2303.01526.pdf">arxiv
+</a>
+</u>
+</font>
+</p>
+
     <!--h2>Supplemental material and results</h2-->
 
     <p><em>Note:</em> This page has 100+ videos. Each set of results will show/hide through a button to ease the burden on the browser.</p>
@@ -212,13 +260,13 @@ redirect_from: saff/
           { path: 'volume/rgb_input.mp4', label: 'Input sequence' },
           { path: 'volume/pyr_feat_input.mp4', label: 'Pyramid semantics' },
           { path: 'volume/feat_output.mp4', label: 'Volume semantics (input views)' },
-          { path: 'volume/feat_output_novel.mp4', label: 'Volume semantics (novel views fixed time)' }
+          { path: 'volume/feat_output_novel.mp4', label: 'Volume semantics (novel view fix time)' }
         ],
         [
           null,
           { path: 'volume/pyr_sal_input.mp4', label: 'Pyramid saliency' },
           { path: 'volume/sal_output.mp4', label: 'Volume saliency (input views)' },
-          { path: 'volume/sal_output_novel.mp4', label: 'Volume saliency (novel views fixed time)' }
+          { path: 'volume/sal_output_novel.mp4', label: 'Volume saliency (novel view fix time)' }
         ]
       ]);
     </script>
@@ -375,8 +423,54 @@ redirect_from: saff/
         addVideoGrid(videoDiv, videoGridData);
         hideVideoDiv(d.name);
       });
+
+
     </script>
+<h2>Bibtex</h2>
+
+<pre><code>
+@article{Liang2023SemanticAF,
+  title={Semantic Attention Flow Fields for Dynamic Scene Decomposition},
+  author={Yiqing Liang and Eliot Laidlaw and Alexander Meyerowitz and Srinath Sridhar and James Tompkin},
+  journal={ArXiv},
+  year={2023},
+  volume={abs/2303.01526}
+}
+</code>
+</pre>
+
+
+<h2>Acknowledgement</h2>
+
+The authors thank the computer vision community in New England for feedback, and
+acknowledge funding from NSF CNS-2038897 and an Amazon Research Award. Eliot was supported by a Randy F. Pausch ’82 Computer Science Undergraduate Summer Research Award at Brown University.
+
+<br>
+
+<p>
+<table style="border-spacing: 10px 0;">
+<tr>
+
+<td><img src="https://visual.cs.brown.edu/projects/matryodshka-webpage/logos/BrownCSLogo.png" width="150px"></td>
+<td><img src="https://assets.amazon.science/07/d9/d204ca2242bea8215dbf9ca5c43e/amazon-science-logo.svg" width="200px"></td>
+<td><img src="https://www.nsf.gov/policies/images/NSF_Official_logo_High_Res_1200ppi.png" width="80px"></td>
+
+
+</tr>
+</table>
+</p>
+
+<!--
+The work was presented orally at <a href="https://necv2022.github.io/">NECV 2022 workshop</a>.
+-->
+
   </div>
+
+
+
+
+
+
 </body>
 
 </html>
