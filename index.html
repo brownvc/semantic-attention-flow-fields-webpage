@@ -201,6 +201,24 @@ p {text-align: center;}
 We present SAFF: a dynamic neural volume reconstruction of a casual monocular video that consists of time-varying color, density, scene flow, semantics, and attention information. The semantics and attention let us identify salient foreground objects separately from the background in arbitrary spacetime views. We add two network heads to represent the semantic and attention information. For optimization, we design semantic attention pyramids from DINO-ViT outputs that trade detail with whole-image context. After optimization, we perform a saliency-aware clustering to decompose the scene. For evaluation on real-world dynamic scene decomposition across spacetime, we annotate object masks in the NVIDIA Dynamic Scene Dataset. We demonstrate that SAFF can decompose dynamic scenes without affecting RGB or depth reconstruction quality, that volume-integrated SAFF outperforms 2D baselines, and that SAFF improves foreground/background segmentation over recent static/dynamic split methods.
 
 <p>
+<table style="margin-left:auto;margin-right:auto;">
+<tr><td><video src="input.mp4" type="video/mp4" height="128" autoplay muted loop></td>
+<td><video src="rc.mp4" type="video/mp4" height="128" autoplay muted loop></td>
+<td><video src="ext.mp4" type="video/mp4" height="128" autoplay muted loop></td>
+<td><video src="nv.mp4" type="video/mp4" height="128" autoplay muted loop></td>
+<td><video src="umb.mp4" type="video/mp4" height="128" autoplay muted loop></td>
+</tr>
+<tr style="text-align:center">
+<td>Input<br>Video</td>
+<td>RGB<br>Recon</td>
+<td>Foreground</td>
+<td>Foreground<br>(Novel View)</td>
+<td>Umbrella<br>(Novel View)</td>
+</tr>
+</table>
+</p>
+
+<p>
 <a href="https://arxiv.org/pdf/2303.01526.pdf">
 <img src="arxiv.png" style="width:150px;border:2px solid #000;">
 </a>
