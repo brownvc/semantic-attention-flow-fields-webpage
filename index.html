@@ -20,7 +20,7 @@ redirect_from: saff/
     }
 
     #container {
-      max-width: 1000px;
+      max-width: 800px;
       text-align: justify;
       margin: 0 auto;
     }
@@ -71,10 +71,8 @@ redirect_from: saff/
     }
 
     .center {
-      display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 100%; 
     }
 
     .centerContent {
@@ -182,8 +180,8 @@ redirect_from: saff/
     <a id="top"></a>
     <h1>Semantic Attention Flow Fields for<br>Monocular Dynamic Scene Decomposition</h1>
   
-    <div class="center">
-    <table>
+    <div >
+    <table class="center">
       <tr>
         <td>
           <h3 style="text-align: left";>
@@ -201,15 +199,7 @@ redirect_from: saff/
     </table>
   </div>
 
-<p class="centerContent">
-  <img src="teaser.svg" style="width:400px;">
-</p>
-
-<h2>Abstract</h2>
-<p class="center">
-We present SAFF: a dynamic neural volume reconstruction of a casual monocular video that consists of time-varying color, density, scene flow, semantics, and attention information. The semantics and attention let us identify salient foreground objects separately from the background in arbitrary spacetime views. We add two network heads to represent the semantic and attention information. For optimization, we design semantic attention pyramids from DINO-ViT outputs that trade detail with whole-image context. After optimization, we perform a saliency-aware clustering to decompose the scene. For evaluation on real-world dynamic scene decomposition across spacetime, we annotate object masks in the NVIDIA Dynamic Scene Dataset. We demonstrate that SAFF can decompose dynamic scenes without affecting RGB or depth reconstruction quality, that volume-integrated SAFF outperforms 2D baselines, and that SAFF improves foreground/background segmentation over recent static/dynamic split methods.
-</p>
-<table style="margin-left:auto;margin-right:auto;">
+<table class="center">
   <tr>
     <td><video src="umbrella_input.mp4" type="video/mp4" height="128" autoplay muted loop></td>
     <td><video src="umbrella_nvs_spacetime.mp4" type="video/mp4" height="128" autoplay muted loop></td>
@@ -228,6 +218,11 @@ We present SAFF: a dynamic neural volume reconstruction of a casual monocular vi
     <td>Foreground (novel spacetime)</td>
   </tr>
 </table>
+
+<h2>Abstract</h2>
+<p class="center">
+We present SAFF: a dynamic neural volume reconstruction of a casual monocular video that consists of time-varying color, density, scene flow, semantics, and attention information. The semantics and attention let us identify salient foreground objects separately from the background in arbitrary spacetime views. We add two network heads to represent the semantic and attention information. For optimization, we design semantic attention pyramids from DINO-ViT outputs that trade detail with whole-image context. After optimization, we perform a saliency-aware clustering to decompose the scene. For evaluation on real-world dynamic scene decomposition across spacetime, we annotate object masks in the NVIDIA Dynamic Scene Dataset. We demonstrate that SAFF can decompose dynamic scenes without affecting RGB or depth reconstruction quality, that volume-integrated SAFF outperforms 2D baselines, and that SAFF improves foreground/background segmentation over recent static/dynamic split methods.
+</p>
 
 <!-- <p>
 <table style="margin-left:auto;margin-right:auto;">
@@ -248,32 +243,50 @@ We present SAFF: a dynamic neural volume reconstruction of a casual monocular vi
 </tr>
 </table>
 </p> -->
-
+  
 <p class="centerContent">
-<a href="https://arxiv.org/pdf/2303.01526.pdf">
-<img src="arxiv.png" style="width:150px;border:2px solid #000;">
-</a>
-<br>
-<a href="https://arxiv.org/pdf/2303.01526.pdf">arxiv
-</a>
+  <img src="teaser.svg" style="width:400px;">
 </p>
 
-<h2>Bibtex</h2>
+<p>
+<table class="center">
+  <tr>
+    <td>
+      <a href="https://arxiv.org/pdf/2303.01526.pdf">
+      <img src="arxiv.png" style="width:150px;border:2px solid #000;">
+      </a>
+      <br>
+      <a href="https://arxiv.org/pdf/2303.01526.pdf">arxiv
+      </a>      
+      </td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>
+      <h3>Bibtex</h3>
+      <pre><code>
+  @article{Liang2023SemanticAF,
+    title={Semantic Attention Flow Fields for Dynamic Scene Decomposition},   
+    author={Yiqing Liang and Eliot Laidlaw and Alexander Meyerowitz 
+      and Srinath Sridhar and James Tompkin},
+    journal={ArXiv},
+    year={2023},
+    volume={abs/2303.01526}
+  }
+        </code>
+        </pre>
+    </td>
+  </tr>
+</table>
+<br>
+</p>
 
-<pre><code>
-@article{Liang2023SemanticAF,
-  title={Semantic Attention Flow Fields for Dynamic Scene Decomposition},
-  author={Yiqing Liang and Eliot Laidlaw and Alexander Meyerowitz and Srinath Sridhar and James Tompkin},
-  journal={ArXiv},
-  year={2023},
-  volume={abs/2303.01526}
-}
-</code>
-</pre>
+
+
 
     <h2>Presentation</h2>
 
+    <div style="text-align: center">
     <iframe src="https://onedrive.live.com/embed?cid=E10E204FB9E6F665&resid=E10E204FB9E6F665%21244211&authkey=ALNwvPtpgE6mzsM&em=2" width="540" height="330" frameborder="0" scrolling="no"></iframe>
+    </div>
 
     <h2>Supplemental video results</h2>
 
